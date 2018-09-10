@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<meta name="author" content="Shunda Huang">
+<meta name="netid" content="sh80">
+<script type="text/javascript">
+
+function validate_required(field,alerttxt)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_form(thisform)
+{
+with (thisform)
+{
+  
+  if (validate_required(aname,"Account name must be filled out!")==false)
+    {aname.focus();return false}
+  
+  if (validate_required(femail,"Email must be filled out!")==false)
+    {femail.focus();return false}
+  
+  
+  if (validate_required(fdate,"Date must be filled out!")==false)
+    {fdate.focus();return false}
+  
+  if (validate_required(ftele,"Telephone number must be filled out!")==false)
+    {ftele.focus();return false}
+  
+  if (validate_required(fzipcode,"Zip code must be filled out!")==false)
+    {fzipcode.focus();return false}
+  
+  if (validate_required(psw,"Password must be filled out!")==false)
+    {psw.focus();return false}
+  
+  if (validate_required(fpsw,"Password Confirmation must be filled out!")==false)
+    {fpsw.focus();return false}
+
+  if (validate_accpattern(aname,"Account name can only be upper or lower case letters and numbers, but may not start with a number")==false)
+    {aname.focus();return false}
+
+  if (validate_zippattern(fzipcode,"Zipcode must be 5-digit number")==false)
+    {fzipcode.focus();return false}
+
+  if (validate_emailpattern(femail,"E-mail Address isn't valid")==false)
+    {femail.focus();return false}
+
+  if (validate_telpattern(ftele,"Telephone number isn't valid")==false)
+    {ftele.focus();return false}
+
+
+  if (validate_age(fdate,"Only individuals 18 years of age or older on the day of registration are allowed to register")==false)
+    {fdate.focus();return false}
+
+  if (validate_psw("psw","fpsw","Password must equal the password confirmation field!")==false)
+    {fpsw.focus();return false}
+  document.getElementById("st1").value=Date.now();
+  // alert(document.getElementById("st1").value)
+}
+}
+
+function validate_emailpattern(field,alerttxt)
+{
+with (field)
+  {
+  var re=/^[a-zA-Z0-9]+@[a-zA-Z0-9]+[.a-zA-Z0-9]*$/;
+  if (!re.test(value))
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+function validate_accpattern(field,alerttxt)
+{
+with (field)
+  {
+  var re=/^[a-zA-Z]{1}[a-zA-Z0-9]*$/;
+  if (!re.test(value))
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_zippattern(field,alerttxt)
+{
+with (field)
+  {
+  var re=/^[0-9]{5}$/;
+  if (!re.test(value))
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_telpattern(field,alerttxt)
+{
+with (field)
+  {
+  var re=/^\d{3}-\d{3}-\d{4}$/;
+  if (!re.test(value))
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_age(field,alerttxt)
+{
+with (field)
+  {
+  var myDate=new Date();
+  var x=myDate.getFullYear();
+  var y=myDate.getMonth();
+  var z=myDate.getDate();
+  x=x-18;
+  myDate.setFullYear(x,y,z);
+  var bir=new Date();
+  var temp=value.split('-')[1];
+  temp=temp-1;
+  bir.setFullYear(value.split('-')[0],temp,value.split('-')[2]);
+  if (bir.getTime()>myDate.getTime())
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_psw(field1,field2,alerttxt)
+{
+  if (document.getElementById(field1).value!=document.getElementById(field2).value)
+    {alert(alerttxt);return false}
+  else {return true}
+}
+
+function myReset(){
+document.getElementById("myForm").reset();
+}
+
+
+
+
+
+</script>
+</head>
+
+<body >
+<form id="myForm" action="formProcessor.html" method="GET" onsubmit="return validate_form(this)">
+<input type="hidden" name="stamp" id="st1">
+<p>Account Name:</p>
+<input type="text" name="aname"  >
+<p>Display Name:</p>
+<input type="text" name="dname" placeholder="optional">
+<p>Email Address:</p>
+<input type="text" name="femail" placeholder="s@a or s@a.b">
+<p>Phone Number</p>
+<input type="tel" placeholder="123-123-1234"  name="ftele">
+<p>Date of Birth</p>
+<input type="date" name="fdate" >
+<p>Zipcode:</p>
+<input type="text" placeholder="77030"  name="fzipcode" >
+<p>Password:</p>
+<input type="password" name="psw"  id="psw">
+<p>Password Confirmation:</p>
+<input type="password" name="fpsw" id="fpsw" >
+<br/>
+<input type="submit" value="Submit"> &thinsp;
+<input type="button" onclick="myReset()" value="Clear">
+
+<script type="text/javascript">
+function out(i){
+    var v = i.validity;
+    if(true === v.valueMessing){
+        i.setCustomValidity("account name can't be empty");
+    }else{
+        if(true === v.patternMismatch){
+            i.setCustomValidity("Account name（4 to 16 digits） can only be upper or lower case letters and numbers and include , but may not start with a number");
+        }else{
+            i.setCustomValidity("");
+        }
+    }
+}
+  
+</script>
+</form>
+</body>
+</html>

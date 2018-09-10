@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Page</title>
+	<meta name="author" content="Shunda Huang">
+	<meta name="netid" content="sh80">
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+	<script type="text/javascript" src="profile.js"></script>
+</head>
+<body id="pro_body">
+	<div id="errmsg"></div>   <!-- used for display message -->
+	<div id="msg"></div>
+	<span class="t">display name:</span>  <!-- display name -->
+	<input id="dis" type="text" name="dname" placeholder="query"> <span id="fixname">query</span>
+	<br/>
+	<span class="t">email address:</span>	<!-- e-mail -->
+	<input id="eaddr" type="text" name="eaddr" placeholder="sh80@rice.edu "><span id="fixeaddr">sh80@rice.edu</span>
+	<br/>
+	<span class="t">phone number:</span>.    <!-- phone number -->
+	<input id="tele" type="text" name="ftele" placeholder="123-123-1234"> <span id="fixtele">281-235-1879</span>
+	<br/>
+	<span class="t">zipcode:</span>			<!-- zipcode -->
+	<input id="zip" type="text" name="fzip" placeholder="77030"> <span id="fixzip">77030</span>
+	<br/>
+	<span class="t">password:</span>		<!-- password -->
+	<input id="psw" type="password" name="psw"> <span id="fixpsw">qwe</span>
+	<br/>
+	<span class="t">password confirmation:</span>
+	<input id="fpsw" type="password" name="fpsw"> <span id="fixfpsw">qwe</span>
+	<br/>
+	<input class="update" type="button" value="Update" onclick="change()"> 
+	<button class="go" onclick="tz()">return to main page</button>
+
+</body>
+</html>

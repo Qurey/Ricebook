@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<meta name="author" content="Shunda Huang">
+<meta name="netid" content="sh80">
+<script type="text/javascript">
+	// document.write(tmp);
+	// var loca="aname=dsadsa&dname=adsdsa&femail=sh80%40rice.edu&ftele=123-123-1234&fdate=1988-08-18&fzipcode=77030&psw=qwe&fpsw=qwe"
+	
+	var tmp=decodeURIComponent(location.search.substring(1));
+	var tmp=tmp.split('&');
+	document.write("<table id='myTable' border='1'>"+"<tr>"+"<th>key</th>"+"<th>value</th>"+"</tr>");
+	tmp.forEach(function(it){
+		if(it.split('=')[0]=="stamp"){
+			alert(it.split('=')[1]);
+			var t=new Date(parseInt(it.split('=')[1]));
+			document.write("<tr>"+"<td>"+"time"+"</td>"+"<td>"+t+"</td>"+"</tr>");
+	}
+	else{
+		document.write("<tr>"+"<td>"+it.split('=')[0]+"</td>"+"<td>"+it.split('=')[1]+"</td>"+"</tr>");
+	}
+	});
+	document.write("</table>");
+    	
+
+</script>
+</head>
+<body>
+<!-- <table id="tab1" border="1">
+	<tr>
+    <th>Month</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+	
+</table> -->
+  
+  <!-- <button type="button" onclick="create()">CreateTable</button> -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!--
+	<button type="button" onclick="create()">CreateTable</button>
+	<script type="text/javascript">
+	var table = window.document.createElement("table");
+	var tmp=decodeURIComponent(location.search.substring(1).split('&'));
+	tmp.forEach(function(it){
+		var tr = document.createElement("tr");
+		var td = document.createElement("td");
+
+		var txt = document.createTextNode(tmp.split('=')[0]);
+		var txt2 = document.createTextNode(tmp.split('=')[1]);
+		txt.innerHTML=tmp.split('=')[0];
+		txt2.innerHTML=tmp.split('=')[1];
+		td.appendChild(txt);
+		td.appendChild(txt2);
+		tr.appendChild(td);
+		table.appendChild(tr)
+	
+
+	});
+	table.setAttribute("border",1);
+	document.body.appendChild(table);
+</script>
+*/-->
